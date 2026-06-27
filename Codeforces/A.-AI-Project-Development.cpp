@@ -8,31 +8,25 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-
-int main() {
+int main (){
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
-
+    
     int t;
-    cin >> t;
-
-    while (t--) {
-        long long n, x, y, z;
-        cin >> n >> x >> y >> z;
-
-        long long noAI = (n + (x + y) - 1) / (x + y);
-
-        long long withAI;
-
-        if (x * z >= n) {
-            withAI = (n + x - 1) / x;
-        } else {
-            long long rem = n - x * z;
-            withAI = z + (rem + (x + 10 * y) - 1) / (x + 10 * y);
+    cin>>t;
+    while(t--){
+        long long n,x,y,z;
+        cin>>n>>x>>y>>z;
+        
+        long long noAi = (n+(x+y)-1)/(x+y);
+        long long withAi;
+        
+        if(x*z>=n) withAi = (n+x-1)/x;
+        else {
+            long long rem = n-x*z;
+            withAi = z+(rem+(x+10*y)-1)/(x+10*y);
         }
-
-        cout << min(noAI, withAI) << '\n';
+        cout<<min(noAi, withAi)<<'\n';
     }
-
     return 0;
 }
