@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/amount-of-time-for-binary-tree-to-be-infected/
  * Language: C++
- * Runtime: 161 ms | Memory: 196.6 MB
+ * Runtime: 150 ms | Memory: 195.1 MB
  * 
  * You are given the root of a binary tree with unique values, and an integer start. At minute 0, an infection starts from the node with value start.
  * 
@@ -61,77 +61,81 @@
  */
 class Solution {
 public:
-    void markParent(TreeNode* root, unordered_map<TreeNode*, TreeNode*>&parent){
-        queue<TreeNode*>q;
+    void markParent(TreeNode* root,
+                    unordered_map<TreeNode*, TreeNode*>& parent,
+                    TreeNode*& startNode,
+                    int start) {
+
+        queue<TreeNode*> q;
         q.push(root);
-        while(!q.empty()){
+
+        while (!q.empty()) {
             TreeNode* node = q.front();
             q.pop();
-            if(node->left){
-                parent[node->left] = node; //map-->child, parent;
+
+            if (node->val == start)
+                startNode = node;
+
+            if (node->left) {
+                parent[node->left] = node;
                 q.push(node->left);
             }
-            if(node->right){
-                parent[node->right] = node; //map-->child, parent;
+
+            if (node->right) {
+                parent[node->right] = node;
                 q.push(node->right);
             }
-
-            //now i have a map that is storing parents of each node
         }
     }
-    TreeNode* startIntToPtr(TreeNode* root, int start){
-        if(!root) return NULL;
-        if(root->val == start) return root;
-        TreeNode* left = startIntToPtr(root->left, start);
-        if(left) return left;
-       return  startIntToPtr(root->right, start);
 
-    }
-    
     int amountOfTime(TreeNode* root, int start) {
-        if(!root) return 0;
-        unordered_map<TreeNode*, TreeNode*>parent;
-        markParent(root, parent);
-        TreeNode* infectedNode = startIntToPtr(root, start);
+        if (root == NULL)
+            return 0;
 
-        unordered_map<TreeNode*, bool>vis;
-        queue<TreeNode*>q;
+        unordered_map<TreeNode*, TreeNode*> parent;
+        TreeNode* startNode = NULL;
 
-        q.push(infectedNode);
-        vis[infectedNode] = true;
+        markParent(root, parent, startNode, start);
+
+        unordered_map<TreeNode*, bool> vis;
+        queue<TreeNode*> q;
+
+        q.push(startNode);
+        vis[startNode] = true;
 
         int time = 0;
-        while(!q.empty()){
+
+        while (!q.empty()) {
             int size = q.size();
             bool infected = false;
 
-            while(size--){
-               TreeNode* node = q.front();
-               q.pop();
+            while (size--) {
+                TreeNode* node = q.front();
+                q.pop();
 
-               if(node->left and !vis[node->left]){
-                vis[node->left] = true;
-                q.push(node->left);
-                infected = true;
-               }
+                if (node->left && !vis[node->left]) {
+                    vis[node->left] = true;
+                    q.push(node->left);
+                    infected = true;
+                }
 
-               if(node->right and !vis[node->right]){
-                vis[node->right] = true;
-                q.push(node->right);
-                infected = true;
-               }
+                if (node->right && !vis[node->right]) {
+                    vis[node->right] = true;
+                    q.push(node->right);
+                    infected = true;
+                }
 
-               if(parent.count(node) and !vis[parent[node]]){
-                vis[parent[node]] = true;
-                q.push(parent[node]);
-                infected = true;
-               }
-
-
+                if (parent.count(node) && !vis[parent[node]]) {
+                    vis[parent[node]] = true;
+                    q.push(parent[node]);
+                    infected = true;
+                }
             }
-            if(infected) time++;
 
+            if (infected)
+                time++;
         }
+
         return time;
     }
 };
