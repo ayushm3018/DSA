@@ -3,7 +3,7 @@
  * Difficulty: Easy
  * URL: https://leetcode.com/problems/binary-tree-paths/
  * Language: C++
- * Runtime: 0 ms | Memory: 17.9 MB
+ * Runtime: 4 ms | Memory: 17.9 MB
  * 
  * Given the root of a binary tree, return all root-to-leaf paths in any order.
  * 
@@ -43,25 +43,38 @@
  */
 class Solution {
 public:
-    void dfs(TreeNode* root, string path, vector<string>&ans){
-        if(root == NULL) return;
-        if(path.empty()) path+=to_string(root->val);
-        else path+="->" + to_string(root->val);
+    void dfs(TreeNode* root, vector<int>& path, vector<string>& ans) {
+        if (root == NULL)
+            return;
 
+        path.push_back(root->val);
 
-        if(root->left == NULL and root->right == NULL )
-        {ans.push_back(path);
-        return;}
+        // If it's a leaf node, convert the path to a string
+        if (root->left == NULL && root->right == NULL) {
+            string s = "";
+
+            for (int i = 0; i < path.size(); i++) {
+                s += to_string(path[i]);
+                if (i != path.size() - 1)
+                    s += "->";
+            }
+
+            ans.push_back(s);
+        }
+
         dfs(root->left, path, ans);
         dfs(root->right, path, ans);
 
+        // Backtrack
+        path.pop_back();
     }
+
     vector<string> binaryTreePaths(TreeNode* root) {
-        vector<string>ans;
-        dfs(root, "", ans);
+        vector<string> ans;
+        vector<int> path;
+
+        dfs(root, path, ans);
 
         return ans;
-        
-        
     }
 };
