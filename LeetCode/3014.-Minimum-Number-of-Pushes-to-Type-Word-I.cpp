@@ -3,7 +3,7 @@
  * Difficulty: Easy
  * URL: https://leetcode.com/problems/minimum-number-of-pushes-to-type-word-i/
  * Language: C++
- * Runtime: 3 ms | Memory: 8.9 MB
+ * Runtime: 0 ms | Memory: 8.6 MB
  * 
  * You are given a string word containing distinct lowercase English letters.
  * 
