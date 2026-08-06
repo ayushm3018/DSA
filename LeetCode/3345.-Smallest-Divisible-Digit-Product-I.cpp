@@ -3,7 +3,7 @@
  * Difficulty: Easy
  * URL: https://leetcode.com/problems/smallest-divisible-digit-product-i/
  * Language: C++
- * Runtime: 0 ms | Memory: 8.5 MB
+ * Runtime: 0 ms | Memory: 8.7 MB
  * 
  * You are given two integers n and t. Return the smallest number greater than or equal to n such that the product of its digits is divisible by t.
  * 
