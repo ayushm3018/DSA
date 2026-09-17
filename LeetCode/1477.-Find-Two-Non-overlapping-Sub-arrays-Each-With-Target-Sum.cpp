@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/find-two-non-overlapping-sub-arrays-each-with-target-sum/
  * Language: C++
- * Runtime: 4 ms | Memory: 89 MB
+ * Runtime: 3 ms | Memory: 88.9 MB
  * 
  * You are given an array of integers arr and an integer target.
  * 
