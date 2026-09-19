@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/circle-and-rectangle-overlapping/
  * Language: C++
- * Runtime: 0 ms | Memory: 7.6 MB
+ * Runtime: 0 ms | Memory: 7.9 MB
  * 
  * You are given a circle represented as (radius, xCenter, yCenter) and an axis-aligned rectangle represented as (x1, y1, x2, y2), where (x1, y1) are the coordinates of the bottom-left corner, and (x2, y2) are the coordinates of the top-right corner of the rectangle.
  * 
