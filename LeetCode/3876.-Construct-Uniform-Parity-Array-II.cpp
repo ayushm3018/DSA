@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/construct-uniform-parity-array-ii/
  * Language: C++
- * Runtime: 3 ms | Memory: 165.9 MB
+ * Runtime: 1 ms | Memory: 165.7 MB
  * 
  * You are given an array nums1 of n distinct integers.
  * 
