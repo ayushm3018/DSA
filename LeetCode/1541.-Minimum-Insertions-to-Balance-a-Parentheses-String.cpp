@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/minimum-insertions-to-balance-a-parentheses-string/
  * Language: C++
- * Runtime: 4 ms | Memory: 15.9 MB
+ * Runtime: 10 ms | Memory: 15.4 MB
  * 
  * You are given a parentheses string s containing only the characters '(' and ')'. A parentheses string is balanced if it can be formed using the following rules:
  * 
