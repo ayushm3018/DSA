@@ -3,7 +3,7 @@
  * Difficulty: Medium
  * URL: https://leetcode.com/problems/longest-resilient-subarray-i/
  * Language: C++
- * Runtime: 183 ms | Memory: 39.5 MB
+ * Runtime: 175 ms | Memory: 39.7 MB
  * 
  * You are given an integer array nums and an integer k.
  * 
